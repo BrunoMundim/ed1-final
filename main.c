@@ -20,7 +20,7 @@ typedef struct itemCardapio ItemCardapio;
 
 struct cardapio{
     int tamanho;
-    ItemCardapio itens[20];
+    ItemCardapio itens[1000];
 };
 typedef struct cardapio Cardapio;
 
@@ -63,6 +63,7 @@ typedef struct comanda Comanda;
 Comanda* abrirComanda(){
     Comanda *C;
     C->itensTotais = 0;
+    C->valorTotal = 0;
 
     return C;
 }
@@ -72,21 +73,19 @@ void adicionarItem(Comanda *comanda, ItemComanda itemComanda){
     comanda->itensTotais++;
 }
 
-float calcularTotalComanda(Comanda* comanda){
+void calcularTotalComanda(Comanda* comanda){
     Cardapio cardapio = criarCardapio();
-    float total = 0;
     for(int i = 0; i < comanda->itensTotais; i++){
         int id = comanda->itens[i].id;
         for(int j = 0; j < cardapio.tamanho; j++){
             if(id == cardapio.itens[j].id){
                 float preco = cardapio.itens[j].preco;
                 float quantidade = comanda->itens[i].qtd;
-                total += preco * quantidade;
+                comanda->valorTotal += preco * quantidade;
                 break;
             }
         }
     }
-    return total;
 }
 
 // TAD PILHA
@@ -244,9 +243,9 @@ Comanda* localizarComandaCliente(char *nome){
         if(flag == 1){
             char *token = strtok(buffer, " ");
             ItemComanda itemComanda;
-            itemComanda.id = (int) token[0] - 48;
+            itemComanda.id = atoi(token);
             token = strtok(NULL, " ");
-            itemComanda.qtd = (int) token[0] - 48;
+            itemComanda.qtd = atoi(token);
             adicionarItem(comanda, itemComanda);
         }      
     }
@@ -262,22 +261,22 @@ int main()
     Fila *comandas = criarFila();
 
     printf("Deseja adicionar mais algum nome a fila? (1- SIM, 2- NAO) ");        
-    scanf("%d", &decisao);
-    while (decisao == 1){       
+    gets(&decisao);
+    while (decisao == '1'){       
         printf("Digite o nome para adicionar na fila: ");
-        scanf("%s", nome);
+        gets(nome);
         strcat(nome, "\n");
 
         // LOCALIZA E CALCULA VALOR TOTAL DA COMANDA
         Comanda *comanda = localizarComandaCliente(nome);
         strcpy(comanda->nomeCliente, nome);
-        float total = calcularTotalComanda(comanda);
-        comanda->valorTotal = total;
+        calcularTotalComanda(comanda);
         insere(comandas, *comanda);
 
         // VERIFICA SE IRA ADICIONAR MAIS ALGUEM NA FILA
-        printf("Deseja adicionar mais algum nome a fila? (1- SIM, 2- NAO) ");        
-        scanf("%d", &decisao);      
+        printf("Deseja adicionar mais algum nome a fila? (1- SIM, 2- NAO) ");
+        fflush(stdin);      
+        gets(&decisao);
     }
     
     // Calcular total comanda
@@ -287,7 +286,7 @@ int main()
         Comanda comanda = retira(comandas, erro);
         printf("Cliente: %s", comanda.nomeCliente);
         printf("Valor total: %.2f\n", comanda.valorTotal);
-        printf("Chocolate: Sonho de Valsa\n");
+        printf("Chocolate: Sonho de Valsa\n\n");
     }
 
     return 0;
