@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "comanda.h": "c",
+        "pilha.h": "c"
+    }
+}
