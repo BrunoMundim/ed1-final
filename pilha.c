@@ -1,9 +1,20 @@
 #include "pilha.h"
 #include <stdbool.h>
+#include <stdlib.h>
+#include <string.h>
 
-void criarPilha(Pilha *p)
+char listaChocolates[5][100] = {"Diamante negro", "Laka", "Sonho de valsa", "Ouro branco", "KitKat"};
+
+Pilha *criarPilha()
 {
-    p->topo = -1;
+    Pilha *P;
+	
+	P = (Pilha *) malloc(sizeof(Pilha));
+	if (P != NULL) { 
+		P->topo = -1;
+	}
+	
+	return P;
 }
 
 void destruirPilha(Pilha *p)
@@ -23,24 +34,34 @@ bool pilhaCheia(Pilha p)
     else return false;
 }
 
-bool empilhar(Pilha *p, char X)
+bool empilhar(Pilha *p, char *X)
 {
     if (pilhaCheia(*p) == true) return false;
 
     else {
         p->topo = p->topo + 1;
-        p->elem[ p->topo ] = X;
+        strcpy(p->elem[p->topo], X);
         return true;
     }
 }
 
-bool desempilhar(Pilha *p, char *X)
+void *desempilhar(Pilha *p, char X[100])
 {
-    if (pilhaVazia(*p) == true) return false;
+    if (pilhaVazia(*p) == true) 
+        strcpy(X, "Sem chocolate :(");
     
     else {
-        *X = p->elem[ p->topo ];
+        strcpy(X, p->elem[p->topo]);
         p->topo = p->topo - 1;
-        return true;
     }
+}
+
+Pilha *criarPilhaChocolates(int qtd){
+    Pilha *P = criarPilha();
+
+    for(int i = 0; i < qtd; i++){
+        empilhar(P, listaChocolates[rand() % 4]);
+    }
+
+    return P;
 }

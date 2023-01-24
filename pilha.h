@@ -6,13 +6,12 @@
 #define MAX 1000
 
 struct pilha {
-    char elem[MAX];
+    char elem[MAX][100];
     int topo;
 };
-
 typedef struct pilha Pilha;
 
-void criarPilha(Pilha *p);
+Pilha *criarPilha();
 
 void destruirPilha(Pilha *p);
 
@@ -20,8 +19,10 @@ bool pilhaVazia(Pilha p);
 
 bool pilhaCheia(Pilha p);
 
-bool empilhar(Pilha *p, char X);
+bool empilhar(Pilha *p, char *X);
 
-bool desempilhar(Pilha *p, char *X);
+void *desempilhar(Pilha *p, char X[100]);
+
+Pilha *criarPilhaChocolates(int qtd);
 
 #endif

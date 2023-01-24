@@ -13,7 +13,7 @@ struct comanda{
     int itensTotais;
     ItemComanda itens[20];
     float valorTotal;
-    //char *chocolate;
+    char chocolate[100];
 };
 typedef struct comanda Comanda;
 

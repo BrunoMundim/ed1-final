@@ -52,7 +52,7 @@ Comanda* localizarComandaCliente(char *nome){
             continue;
         }
 
-        if(strcmp(buffer, "-\r\n") == 0){
+        if(strcmp(buffer, "-\r\n") == 0 || strcmp(buffer, "-") == 0){
             flag = 0;
         } 
 

@@ -15,6 +15,8 @@ int main()
 
     Fila *comandas = criarFila();
 
+    Pilha *pilhaChocolates = criarPilhaChocolates(2);
+
     printf("Deseja adicionar mais algum nome a fila? (1- SIM, 2- NAO) ");        
     gets(&decisao);
     while (decisao == '1'){       
@@ -22,11 +24,20 @@ int main()
         gets(nome);
         strcat(nome, "\r\n");
 
-        // LOCALIZA E CALCULA VALOR TOTAL DA COMANDA
+        // LOCALIZA COMANDA E CALCULA VALOR TOTAL DA COMANDA
         Comanda *comanda = localizarComandaCliente(nome);
-        strcpy(comanda->nomeCliente, nome);
-        calcularTotalComanda(comanda);
-        insere(comandas, *comanda);
+        if(comanda->itensTotais > 0){
+            strcpy(comanda->nomeCliente, nome);
+            calcularTotalComanda(comanda);
+
+            // VERIFICA SE EXISTEM CHOCOLATES NA PILHA E ADICIONA NA COMANDA CASO EXISTA
+            char chocolate[100] = "";
+            desempilhar(pilhaChocolates, chocolate);
+            strcpy(comanda->chocolate, chocolate);
+
+            // INSERE COMANDA NA FILA
+            insere(comandas, *comanda);  
+        }              
 
         // VERIFICA SE IRA ADICIONAR MAIS ALGUEM NA FILA
         printf("Deseja adicionar mais algum nome a fila? (1- SIM, 2- NAO) ");
@@ -41,7 +52,7 @@ int main()
         Comanda comanda = retira(comandas, erro);
         printf("Cliente: %s", comanda.nomeCliente);
         printf("Valor total: %.2f\n", comanda.valorTotal);
-        printf("Chocolate: Sonho de Valsa\n\n");
+        printf("Chocolate: %s\n\n", comanda.chocolate);
     }
 
     return 0;
