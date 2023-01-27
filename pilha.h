@@ -33,7 +33,10 @@ void *desempilhar(Pilha *p, char X[100]);
 // CRIA UMA PILHA DE CHOCOLATES RANDOMICA DE TAMANHO IGUAL A QUANTIDADE INFORMADA
 Pilha *criarPilhaChocolates(int qtd);
 
+<<<<<<< HEAD
 // IMPRIME A PILHA
+=======
+>>>>>>> b66e5f3a9184e7f6fd7039ca785789468ccaa544
 void imprimirPilha(Pilha *P);
 
 #endif

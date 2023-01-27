@@ -70,7 +70,10 @@ Comanda retira(Fila *F, bool erro)
 	return C;
 }
 
+<<<<<<< HEAD
 // IMPRIME A FILA
+=======
+>>>>>>> b66e5f3a9184e7f6fd7039ca785789468ccaa544
 void imprimirFila(Fila *F){
 	Fila *F1 = criarFila();
 	Comanda comanda;

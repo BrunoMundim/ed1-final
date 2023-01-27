@@ -7,14 +7,24 @@ Cardapio criarCardapio(){
     cardapio.tamanho = 14;
 
     ItemCardapio item;
+<<<<<<< HEAD
     item.id = 1;
+=======
+    item.id = 001;
+>>>>>>> b66e5f3a9184e7f6fd7039ca785789468ccaa544
     strcpy(item.nome, "Café expresso");
     item.preco = 5.7;
     cardapio.itens[0] = item;
 
+<<<<<<< HEAD
     item.id = 2;
     strcpy(item.nome, "Pingado");
     item.preco = 2.5;
+=======
+    item.id = 002;
+    strcpy(item.nome, "Pão francês com manteiga na chapa");
+    item.preco = 4.6;
+>>>>>>> b66e5f3a9184e7f6fd7039ca785789468ccaa544
     cardapio.itens[1] = item;
 
     item.id = 3;

@@ -8,7 +8,10 @@
 #include "pilha.h"
 #include "fila.h"
 
+<<<<<<< HEAD
 // FUNÇÃO RESPONSAVEL POR LIDAR COM A ADIÇÃO DE NOVOS CLIENTES A FILA
+=======
+>>>>>>> b66e5f3a9184e7f6fd7039ca785789468ccaa544
 bool resolverComanda(Fila *comandas, Pilha *chocolates){
     char nome[256];
 
@@ -18,6 +21,7 @@ bool resolverComanda(Fila *comandas, Pilha *chocolates){
 
     // LOCALIZA COMANDA CLIENTE
     Comanda *comanda = localizarComandaCliente(nome);
+<<<<<<< HEAD
 
     // VERIFICA SE O CLIENTE CONSUMIU
     if(comanda->itensTotais > 0){
@@ -44,6 +48,35 @@ int main()
     int decisao;
 
     // MENU
+=======
+
+    // VERIFICA SE O CLIENTE CONSUMIU
+    if(comanda->itensTotais > 0){
+        // ADICIONA NOME DO CLIENTE A COMANDA
+        strcpy(comanda->nomeCliente, nome);
+
+        calcularTotalComanda(comanda);
+
+        // VERIFICA SE EXISTEM CHOCOLATES NA PILHA E ADICIONA NA COMANDA
+        char chocolate[100] = "";
+        desempilhar(chocolates, chocolate);
+        strcpy(comanda->chocolate, chocolate);
+
+        // INSERE COMANDA NA FILA
+        insere(comandas, *comanda);
+    }   
+}
+
+int main()
+{   
+    Pilha *pilhaChocolates = criarPilhaChocolates(2);
+    Fila *comandas = criarFila();    
+
+    int decisao;
+
+    // MENU
+
+>>>>>>> b66e5f3a9184e7f6fd7039ca785789468ccaa544
     do {
         printf("\nDeseja adicionar mais algum nome a fila? (1- SIM, 2- NAO, 3 - MAIS OPCOES) ");
         gets(&decisao);
@@ -52,7 +85,11 @@ int main()
             resolverComanda(comandas, pilhaChocolates);
         
         if(decisao == '3'){
+<<<<<<< HEAD
             int decisaoMaisOpcoes;
+=======
+            char decisaoMaisOpcoes;
+>>>>>>> b66e5f3a9184e7f6fd7039ca785789468ccaa544
 
             printf("\nImprimir fila de cliente - 1\n");
             printf("Imprimir pilha de chocolates - 2\n");
