@@ -68,3 +68,21 @@ Comanda* localizarComandaCliente(char *nome){
 
     return comanda;
 }
+
+void imprimirComanda(Comanda comanda){
+    Cardapio cardapio = criarCardapio();
+    printf("Nome cliente: %s", comanda.nomeCliente);    
+
+    for(int i = 0; i < comanda.itensTotais; i++){
+        int id = comanda.itens[i].id;
+        for(int j = 0; j < cardapio.tamanho; j++){
+            if(id == cardapio.itens[j].id){
+                printf("Item %d: x%d %s \n", (i+1), comanda.itens[i].qtd, cardapio.itens[j].nome);
+                break;
+            }
+        }
+    }
+
+    printf("Valor total: %.2f\n", comanda.valorTotal);
+    printf("Chocolate brinde: %s\n", comanda.chocolate);
+}

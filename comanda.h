@@ -4,7 +4,7 @@
 
 struct itemComanda{
     int id;
-    int qtd; // quantidade de itens consumidos
+    int qtd;
 };
 typedef struct itemComanda ItemComanda;
 
@@ -24,5 +24,7 @@ void adicionarItem(Comanda *comanda, ItemComanda itemComanda);
 void calcularTotalComanda(Comanda* comanda);
 
 Comanda* localizarComandaCliente(char *nome);
+
+void imprimirComanda(Comanda comanda);
 
 #endif

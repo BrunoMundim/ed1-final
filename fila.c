@@ -62,3 +62,17 @@ Comanda retira(Fila *F, bool erro)
     erro = false;
 	return C;
 }
+
+void imprimirFila(Fila *F){
+	Fila *F1 = criarFila();
+	Comanda comanda;
+	bool erro;
+	for(int i = 1; filaVazia(F) == false; i++){
+		printf("\nCliente %d: \n", i);
+		comanda = retira(F, erro);
+		imprimirComanda(comanda);
+		insere(F1, comanda);
+	}
+	while(filaVazia(F1) == false)
+		insere(F, retira(F1, erro));
+}

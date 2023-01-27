@@ -65,3 +65,19 @@ Pilha *criarPilhaChocolates(int qtd){
 
     return P;
 }
+
+void imprimirPilha(Pilha *P){
+    Pilha *P1 = criarPilha();
+    char *chocolate;
+    printf("\nPilha: ");
+    while(pilhaVazia(*P) == false){
+        desempilhar(P, chocolate);
+        empilhar(P1, chocolate);
+        printf("\"%s\"", chocolate);        
+    }
+    while(pilhaVazia(*P1) == false){
+        desempilhar(P1, chocolate);
+        empilhar(P, chocolate);
+    }
+    printf("\n");
+}

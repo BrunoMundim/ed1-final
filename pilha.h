@@ -2,6 +2,7 @@
 #define PILHA_H
 
 #include <stdbool.h>
+#include <stdio.h>
 
 #define MAX 1000
 
@@ -24,5 +25,7 @@ bool empilhar(Pilha *p, char *X);
 void *desempilhar(Pilha *p, char X[100]);
 
 Pilha *criarPilhaChocolates(int qtd);
+
+void imprimirPilha(Pilha *P);
 
 #endif

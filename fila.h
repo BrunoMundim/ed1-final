@@ -27,4 +27,6 @@ bool insere(Fila *F, Comanda comanda);
 
 Comanda retira(Fila *F, bool erro);
 
+void imprimirFila(Fila *F);
+
 #endif

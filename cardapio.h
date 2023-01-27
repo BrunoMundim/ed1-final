@@ -4,6 +4,7 @@
 struct itemCardapio {
     int id;
     float preco;
+    char nome[100];
 };
 typedef struct itemCardapio ItemCardapio;
 
