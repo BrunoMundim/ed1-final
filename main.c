@@ -13,7 +13,8 @@ bool resolverComanda(Fila *comandas, Pilha *chocolates){
     char nome[256];
 
     printf("Digite o nome para adicionar na fila: ");
-    gets(nome);
+    scanf("\n");
+    fgets(nome, 256, stdin);
     strcat(nome, "\r\n");
 
     // LOCALIZA COMANDA CLIENTE
@@ -41,31 +42,33 @@ int main()
     Pilha *pilhaChocolates = criarPilhaChocolates(2); // PARA ALTERAR O NUMERO DE CHOCOLATES NA PILHA, BASTA ALTERAR O ARGUMENTO DA FUNÇÃO criarPilhaChocolates
     Fila *comandas = criarFila();    
 
-    int decisao;
+    char decisao[2];
 
     // MENU
     do {
         printf("\nDeseja adicionar mais algum nome a fila? (1- SIM, 2- NAO, 3 - MAIS OPCOES) ");
-        gets(&decisao);
+        scanf("\n");
+        fgets(decisao, 2, stdin);
 
-        if(decisao == '1')
+        if(decisao[0] == '1')
             resolverComanda(comandas, pilhaChocolates);
         
-        if(decisao == '3'){
-            int decisaoMaisOpcoes;
+        if(decisao[0] == '3'){
+            char decisaoMaisOpcoes[2];
 
             printf("\nImprimir fila de cliente - 1\n");
             printf("Imprimir pilha de chocolates - 2\n");
             printf("SAIR - 3\n");
             printf("\nEscolha uma opcao: ");
-            gets(&decisaoMaisOpcoes);
+            scanf("\n");
+            fgets(decisaoMaisOpcoes, 2, stdin);
             
-            if(decisaoMaisOpcoes == '1') imprimirFila(comandas);
+            if(decisaoMaisOpcoes[0] == '1') imprimirFila(comandas);
 
-            if(decisaoMaisOpcoes == '2') imprimirPilha(pilhaChocolates);
+            if(decisaoMaisOpcoes[0] == '2') imprimirPilha(pilhaChocolates);
 
         }       
-    } while(decisao == '1' || decisao == '3');
+    } while(decisao[0] != '2');
 
 
     // IMPRIMIR NOME, VALOR TOTAL E CHOCOLATE DE TODOS CLIENTES DA FILA, SEMPRE FAZ SE HOUVEREM CLIENTES NA FILA

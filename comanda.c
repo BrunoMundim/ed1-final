@@ -44,6 +44,10 @@ void calcularTotalComanda(Comanda* comanda){
 
 // LOCALIZA A COMANDA DO CLIENTE NO comandas.txt E GERA UMA STRUCT COMANDA COM OS DADOS LOCALIZADOS
 Comanda* localizarComandaCliente(char *nome){
+    // CORRIGINDO
+    nome[strlen(nome) - 1] = '\0';
+    strcat(nome, "\r\n");
+
     // ABRINDO comandas.txt
     FILE *comandas;
     comandas = fopen("comandas.txt", "r");
