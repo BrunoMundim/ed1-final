@@ -33,10 +33,7 @@ bool insere(Fila *F, Comanda comanda);
 // RETORNA UMA COMANDA RETIRADA DA FILA
 Comanda retira(Fila *F, bool erro);
 
-<<<<<<< HEAD
 // IMPRIME A FILA
-=======
->>>>>>> b66e5f3a9184e7f6fd7039ca785789468ccaa544
 void imprimirFila(Fila *F);
 
 #endif

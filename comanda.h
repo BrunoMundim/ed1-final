@@ -31,10 +31,7 @@ void calcularTotalComanda(Comanda* comanda);
 // LOCALIZA A COMANDA DO CLIENTE NO comandas.txt E GERA UMA STRUCT COMANDA COM OS DADOS LOCALIZADOS
 Comanda* localizarComandaCliente(char *nome);
 
-<<<<<<< HEAD
 // IMPRIME UMA COMANDA COMPLETA NA TELA
-=======
->>>>>>> b66e5f3a9184e7f6fd7039ca785789468ccaa544
 void imprimirComanda(Comanda comanda);
 
 #endif

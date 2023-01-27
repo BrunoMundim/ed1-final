@@ -83,10 +83,7 @@ Comanda* localizarComandaCliente(char *nome){
     return comanda;
 }
 
-<<<<<<< HEAD
 // IMPRIME UMA COMANDA COMPLETA NA TELA
-=======
->>>>>>> b66e5f3a9184e7f6fd7039ca785789468ccaa544
 void imprimirComanda(Comanda comanda){
     Cardapio cardapio = criarCardapio();
     printf("Nome cliente: %s", comanda.nomeCliente);    
