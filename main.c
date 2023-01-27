@@ -8,51 +8,73 @@
 #include "pilha.h"
 #include "fila.h"
 
-int main()
-{   
-    int decisao;
+// FUNÇÃO RESPONSAVEL POR LIDAR COM A ADIÇÃO DE NOVOS CLIENTES A FILA
+bool resolverComanda(Fila *comandas, Pilha *chocolates){
     char nome[256];
 
-    Fila *comandas = criarFila();
+    printf("Digite o nome para adicionar na fila: ");
+    gets(nome);
+    strcat(nome, "\r\n");
 
-    Pilha *pilhaChocolates = criarPilhaChocolates(2);
+    // LOCALIZA COMANDA CLIENTE
+    Comanda *comanda = localizarComandaCliente(nome);
 
-    printf("Deseja adicionar mais algum nome a fila? (1- SIM, 2- NAO) ");        
-    gets(&decisao);
-    while (decisao == '1'){       
-        printf("Digite o nome para adicionar na fila: ");
-        gets(nome);
-        strcat(nome, "\r\n");
+    // VERIFICA SE O CLIENTE CONSUMIU
+    if(comanda->itensTotais > 0){
+        // ADICIONA NOME DO CLIENTE A COMANDA
+        strcpy(comanda->nomeCliente, nome);
 
-        // LOCALIZA COMANDA E CALCULA VALOR TOTAL DA COMANDA
-        Comanda *comanda = localizarComandaCliente(nome);
-        if(comanda->itensTotais > 0){
-            strcpy(comanda->nomeCliente, nome);
-            calcularTotalComanda(comanda);
+        calcularTotalComanda(comanda);
 
-            // VERIFICA SE EXISTEM CHOCOLATES NA PILHA E ADICIONA NA COMANDA CASO EXISTA
-            char chocolate[100] = "";
-            desempilhar(pilhaChocolates, chocolate);
-            strcpy(comanda->chocolate, chocolate);
+        // VERIFICA SE EXISTEM CHOCOLATES NA PILHA E ADICIONA NA COMANDA
+        char chocolate[100] = "";
+        desempilhar(chocolates, chocolate);
+        strcpy(comanda->chocolate, chocolate);
 
-            // INSERE COMANDA NA FILA
-            insere(comandas, *comanda);  
-        }              
+        // INSERE COMANDA NA FILA
+        insere(comandas, *comanda);
+    }   
+}
 
-        // VERIFICA SE IRA ADICIONAR MAIS ALGUEM NA FILA
-        printf("Deseja adicionar mais algum nome a fila? (1- SIM, 2- NAO) ");
-        fflush(stdin);      
+int main()
+{   
+    Pilha *pilhaChocolates = criarPilhaChocolates(2); // PARA ALTERAR O NUMERO DE CHOCOLATES NA PILHA, BASTA ALTERAR O ARGUMENTO DA FUNÇÃO criarPilhaChocolates
+    Fila *comandas = criarFila();    
+
+    int decisao;
+
+    // MENU
+    do {
+        printf("\nDeseja adicionar mais algum nome a fila? (1- SIM, 2- NAO, 3 - MAIS OPCOES) ");
         gets(&decisao);
-    }
-    
-    // Calcular total comanda
-    
+
+        if(decisao == '1')
+            resolverComanda(comandas, pilhaChocolates);
+        
+        if(decisao == '3'){
+            int decisaoMaisOpcoes;
+
+            printf("\nImprimir fila de cliente - 1\n");
+            printf("Imprimir pilha de chocolates - 2\n");
+            printf("SAIR - 3\n");
+            printf("\nEscolha uma opcao: ");
+            gets(&decisaoMaisOpcoes);
+            
+            if(decisaoMaisOpcoes == '1') imprimirFila(comandas);
+
+            if(decisaoMaisOpcoes == '2') imprimirPilha(pilhaChocolates);
+
+        }       
+    } while(decisao == '1' || decisao == '3');
+
+
+    // IMPRIMIR NOME, VALOR TOTAL E CHOCOLATE DE TODOS CLIENTES DA FILA, SEMPRE FAZ SE HOUVEREM CLIENTES NA FILA
     while(comandas->num_elem > 0) {
         bool erro;
         Comanda comanda = retira(comandas, erro);
-        printf("Cliente: %s", comanda.nomeCliente);
+        printf("\nCliente: %s", comanda.nomeCliente);
         printf("Valor total: %.2f\n", comanda.valorTotal);
-        printf("Chocolate: %s\n\n", comanda.chocolate);
+        printf("Chocolate: %s\n", comanda.chocolate);
     }
 
     return 0;

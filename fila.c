@@ -1,9 +1,11 @@
 #include "fila.h"
 #include <stdbool.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 #define MAX 1000
 
+// GERA UM STRUCT FILA
 Fila *criarFila()
 {
 	Fila *F;
@@ -18,23 +20,27 @@ Fila *criarFila()
 	return F;
 }
 
+// DESTROI O STRUCT FILA
 void destruirFila(Fila *F)
 {
     if (F != NULL) free(F);
 }
 
+// VERIFICA SE A FILA ESTÁ VAZIA
 bool filaVazia(Fila *F)
 {
     if (F->num_elem == 0) return true;
     else return false;
 }
 
+// VERIFICA SE A FILA ESTA CHEIA
 bool filaCheia(Fila *F)
 {
     if (F->num_elem == MAX) return true;
     else return false;
 }
 
+// INSERE UMA COMANDA NA FILA
 bool insere(Fila *F, Comanda comanda)
 {
 	
@@ -49,6 +55,7 @@ bool insere(Fila *F, Comanda comanda)
 	return true;
 }
 
+// RETORNA UMA COMANDA RETIRADA DA FILA
 Comanda retira(Fila *F, bool erro)
 {
 	if (filaVazia(F) == true) erro = true;
@@ -61,4 +68,19 @@ Comanda retira(Fila *F, bool erro)
 
     erro = false;
 	return C;
+}
+
+// IMPRIME A FILA
+void imprimirFila(Fila *F){
+	Fila *F1 = criarFila();
+	Comanda comanda;
+	bool erro;
+	for(int i = 1; filaVazia(F) == false; i++){
+		printf("\nCliente %d: \n", i);
+		comanda = retira(F, erro);
+		imprimirComanda(comanda);
+		insere(F1, comanda);
+	}
+	while(filaVazia(F1) == false)
+		insere(F, retira(F1, erro));
 }

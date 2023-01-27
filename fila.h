@@ -15,16 +15,25 @@ struct fila {
 
 typedef struct fila Fila;
 
+// GERA UM STRUCT FILA
 Fila *criarFila();
 
+// DESTROI O STRUCT FILA
 void destruirFila(Fila *F);
 
+// VERIFICA SE A FILA ESTÁ VAZIA
 bool filaVazia(Fila *F);
 
+// VERIFICA SE A FILA ESTA CHEIA
 bool filaCheia(Fila *F);
 
+// INSERE UMA COMANDA NA FILA
 bool insere(Fila *F, Comanda comanda);
 
+// RETORNA UMA COMANDA RETIRADA DA FILA
 Comanda retira(Fila *F, bool erro);
+
+// IMPRIME A FILA
+void imprimirFila(Fila *F);
 
 #endif

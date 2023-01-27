@@ -4,6 +4,7 @@
 struct itemCardapio {
     int id;
     float preco;
+    char nome[100];
 };
 typedef struct itemCardapio ItemCardapio;
 
@@ -13,6 +14,7 @@ struct cardapio{
 };
 typedef struct cardapio Cardapio;
 
+// FUNÇÃO QUE CRIA UM CARDAPIO
 Cardapio criarCardapio();
 
 #endif
