@@ -76,29 +76,20 @@ Pilha *criarPilhaChocolates(int qtd){
     return P;
 }
 
-<<<<<<< HEAD
 // IMPRIME A PILHA
-=======
->>>>>>> b66e5f3a9184e7f6fd7039ca785789468ccaa544
 void imprimirPilha(Pilha *P){
     Pilha *P1 = criarPilha();
     char *chocolate;
     printf("\nPilha: ");
-<<<<<<< HEAD
 
     // REMOVE OS ITENS DA PILHA, IMPRIME NA TELA E EMPILHA EM UM PILHA AUXILIAR
-=======
->>>>>>> b66e5f3a9184e7f6fd7039ca785789468ccaa544
     while(pilhaVazia(*P) == false){
         desempilhar(P, chocolate);
         empilhar(P1, chocolate);
         printf("\"%s\"", chocolate);        
     }
-<<<<<<< HEAD
 
     // VOLTA OS ITENS PARA A PILHA ORIGINAL
-=======
->>>>>>> b66e5f3a9184e7f6fd7039ca785789468ccaa544
     while(pilhaVazia(*P1) == false){
         desempilhar(P1, chocolate);
         empilhar(P, chocolate);
