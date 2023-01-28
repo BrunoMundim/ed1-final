@@ -9,13 +9,12 @@
 #include "fila.h"
 
 // FUNÇÃO RESPONSAVEL POR LIDAR COM A ADIÇÃO DE NOVOS CLIENTES A FILA
-bool resolverComanda(Fila *comandas, Pilha *chocolates){
+void resolverComanda(Fila *comandas, Pilha *chocolates){
     char nome[256];
 
     printf("Digite o nome para adicionar na fila: ");
     scanf("\n");
     fgets(nome, 256, stdin);
-    strcat(nome, "\r\n");
 
     // LOCALIZA COMANDA CLIENTE
     Comanda *comanda = localizarComandaCliente(nome);
@@ -38,7 +37,7 @@ bool resolverComanda(Fila *comandas, Pilha *chocolates){
 }
 
 int main()
-{   
+{
     Pilha *pilhaChocolates = criarPilhaChocolates(2); // PARA ALTERAR O NUMERO DE CHOCOLATES NA PILHA, BASTA ALTERAR O ARGUMENTO DA FUNÇÃO criarPilhaChocolates
     Fila *comandas = criarFila();    
 
@@ -73,7 +72,7 @@ int main()
 
     // IMPRIMIR NOME, VALOR TOTAL E CHOCOLATE DE TODOS CLIENTES DA FILA, SEMPRE FAZ SE HOUVEREM CLIENTES NA FILA
     while(comandas->num_elem > 0) {
-        bool erro;
+        bool erro = false;
         Comanda comanda = retira(comandas, erro);
         printf("\nCliente: %s", comanda.nomeCliente);
         printf("Valor total: %.2f\n", comanda.valorTotal);
