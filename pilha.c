@@ -53,7 +53,7 @@ bool empilhar(Pilha *p, char *X)
 }
 
 // REMOVE UM ITEM DA PILHA
-void *desempilhar(Pilha *p, char X[100])
+void desempilhar(Pilha *p, char X[100])
 {
     if (pilhaVazia(*p) == true) 
         strcpy(X, "Sem chocolate :(");
@@ -79,20 +79,24 @@ Pilha *criarPilhaChocolates(int qtd){
 // IMPRIME A PILHA
 void imprimirPilha(Pilha *P){
     Pilha *P1 = criarPilha();
-    char *chocolate;
+    char * chocolate = (char *) malloc(100);
     printf("\nPilha: ");
 
     // REMOVE OS ITENS DA PILHA, IMPRIME NA TELA E EMPILHA EM UM PILHA AUXILIAR
     while(pilhaVazia(*P) == false){
         desempilhar(P, chocolate);
         empilhar(P1, chocolate);
-        printf("\"%s\"", chocolate);        
+        printf("\"%s\" ", chocolate);        
     }
 
     // VOLTA OS ITENS PARA A PILHA ORIGINAL
     while(pilhaVazia(*P1) == false){
         desempilhar(P1, chocolate);
         empilhar(P, chocolate);
+    }
+
+    if(pilhaVazia(*P) == true) {
+        printf("Chocolates esgotados\n");
     }
     printf("\n");
 }

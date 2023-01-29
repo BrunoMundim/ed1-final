@@ -28,7 +28,7 @@ bool pilhaCheia(Pilha p);
 bool empilhar(Pilha *p, char *X);
 
 // REMOVE UM ITEM DA PILHA
-void *desempilhar(Pilha *p, char X[100]);
+void desempilhar(Pilha *p, char X[100]);
 
 // CRIA UMA PILHA DE CHOCOLATES RANDOMICA DE TAMANHO IGUAL A QUANTIDADE INFORMADA
 Pilha *criarPilhaChocolates(int qtd);

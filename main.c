@@ -38,21 +38,25 @@ void resolverComanda(Fila *comandas, Pilha *chocolates){
 
 int main()
 {
-    Pilha *pilhaChocolates = criarPilhaChocolates(2); // PARA ALTERAR O NUMERO DE CHOCOLATES NA PILHA, BASTA ALTERAR O ARGUMENTO DA FUNÇÃO criarPilhaChocolates
+    char qtdChocolates[1000];
+    printf("Quantos chocolates existirão na pilha: ");
+    fgets(qtdChocolates, 1000, stdin);    
+    printf("Gerando chocolates randômicos...\n");
+    Pilha *pilhaChocolates = criarPilhaChocolates(atoi(qtdChocolates)); // PARA ALTERAR O NUMERO DE CHOCOLATES NA PILHA, BASTA ALTERAR O ARGUMENTO DA FUNÇÃO criarPilhaChocolates
     Fila *comandas = criarFila();    
 
-    char decisao[2];
-
+    char decisao[1000];
+    bool flagDecisao = false;
     // MENU
     do {
-        printf("\nDeseja adicionar mais algum nome a fila? (1- SIM, 2- NAO, 3 - MAIS OPCOES) ");
+        printf("\nO que deseja fazer? (1- ADICIONAR CLIENTE A FILA, 2- MAIS OPCOES, 3- SAIR) ");
         scanf("\n");
-        fgets(decisao, 2, stdin);
+        fgets(decisao, 1000, stdin);
 
-        if(decisao[0] == '1')
+        if(decisao[0] == '1' && decisao[1] == '\n')
             resolverComanda(comandas, pilhaChocolates);
         
-        if(decisao[0] == '3'){
+        if(decisao[0] == '2' && decisao[1] == '\n'){
             char decisaoMaisOpcoes[2];
 
             printf("\nImprimir fila de cliente - 1\n");
@@ -62,12 +66,13 @@ int main()
             scanf("\n");
             fgets(decisaoMaisOpcoes, 2, stdin);
             
-            if(decisaoMaisOpcoes[0] == '1') imprimirFila(comandas);
+            if(decisaoMaisOpcoes[0] == '1' && decisao[1] == '\n') imprimirFila(comandas);
 
-            if(decisaoMaisOpcoes[0] == '2') imprimirPilha(pilhaChocolates);
+            if(decisaoMaisOpcoes[0] == '2' && decisao[1] == '\n') imprimirPilha(pilhaChocolates);
 
-        }       
-    } while(decisao[0] != '2');
+        }  
+        if(decisao[0] == '3' && decisao[1] == '\n') flagDecisao = true;
+    } while(flagDecisao == false);
 
 
     // IMPRIMIR NOME, VALOR TOTAL E CHOCOLATE DE TODOS CLIENTES DA FILA, SEMPRE FAZ SE HOUVEREM CLIENTES NA FILA
