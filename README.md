@@ -19,4 +19,5 @@ do topo da pilha.
 ### Como rodar o código
 
 Ubuntu: Código principal funcional, podendo ser rodado através da IDE de preferência ou utilizando o comando MAKE, para criar um executável
+
 Windows: Utilizar pasta separada onde o código está agregado, rodar na IDE de preferência.
