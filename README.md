@@ -14,3 +14,9 @@ fila invariavelmente grande e são atendidos pela gerente do restaurante.
 Cada cliente tem uma comanda com a lista dos produtos consumidos. Para cada cliente atendido, a gerente informa o preço total, somando os valores dos itens da comanda.
 Além disso, o restaurante está agraciando os clientes com um pequeno chocolate. A gerente mantém uma pilha de chocolates diversos e entrega ao cliente atendido o chocolate
 do topo da pilha.
+
+
+### Como rodar o código
+
+Ubuntu: Código principal funcional, podendo ser rodado através da IDE de preferência ou utilizando o comando MAKE, para criar um executável
+Windows: Utilizar pasta separada onde o código está agregado, rodar na IDE de preferência.
