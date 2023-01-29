@@ -1,0 +1,188 @@
+﻿Casos de Teste Trabalho Prático Estruturas de Dados 1
+
+
+Bruno Mundim Franco Rocha Gonçalves - 12121BSI246
+Davi Falcão Fernandes - 12121BSI233
+
+
+
+
+Caso 1: Quantidade de chocolates negativa
+* Escolha de inserir (- 2) chocolates a pilha de chocolates
+* Escolha da opção 2 (MAIS OPÇÕES)
+* Escolha da opção 2 (IMPRIMIR PILHA DE CHOCOLATES)
+* Resultado esperado: Pilha vazia
+
+
+
+
+Caso 2: String ao invés de inteiro
+* Escolha de inserir “teste” chocolates a pilha de chocolates
+* Escolha da opção 2 (MAIS OPÇÕES)
+* Escolha da opção 2 (IMPRIMIR PILHA DE CHOCOLATES)
+* Resultado esperado: Pilha vazia
+
+
+
+
+Caso 3: Imprimir pilha de chocolates
+* Escolha de inserir 2 chocolates
+* Escolha da opção 2 (MAIS OPÇÕES)
+* Escolha da opção 2 (IMPRIMIR PILHA DE CHOCOLATES)
+* Resultado esperado: Mostrar duas strings de chocolates
+
+
+
+
+Caso 4: Sair sem inserir nenhuma comanda
+* Escolha de inserir 5 chocolates
+* Escolha da opção 3 (SAIR)
+* Resultado esperado: O programa é finalizado.
+
+
+
+
+Caso 5: Inserir uma comanda
+* Escolha de inserir 5 chocolates a pilha
+* Escolha da opção 1 (SIM)
+* Nome digitado: bruno
+* Escolha da opção 3 (SAIR)
+* Mostra as informações da comanda: bruno
+
+
+
+
+Caso 6: Inserir comanda que não consta no arquivo txt
+* Escolha de inserir 5 chocolates a pilha
+* Escolha da opção 1 (SIM)
+* Nome digitado: (qualquer nome que não tenha comanda cadastrada em comandas.txt)
+* Escolha da opção 3 (SAIR)
+* Não mostra nenhuma comanda ao finalizar o programa
+
+
+
+
+Caso 7: Inserir 2 comandas
+* Escolha de inserir 5 chocolates
+* Escolha da opção 1 (SIM)
+* Nome digitado: bruno
+* Escolha da opção 1 (SIM)
+* Nome digitado: davi
+* Escolha da opção 3 (SAIR)
+* Resultado esperado : Valor total e chocolate dos clientes “bruno” e “davi”
+
+
+
+
+
+
+Caso 8: Inserir 2 comandas, imprimir a fila e finalizar
+* Escolha de inserir 5 chocolates
+* Escolha da opção 1 (SIM)
+* Nome digitado: bruno
+* Escolha da opção 1 (SIM)
+* Nome digitado: davi
+* Escolha da opção 2 (MAIS OPÇÕES)
+* Escolha da opção 1 (IMPRIMIR FILA DE CLIENTES)
+* Resultado esperado: Fila (bruno , davi)
+* Escolha da opção 3 (SAIR)
+* Resultado esperado : Valor total e chocolate dos clientes “bruno” e “davi”
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Caso 9: Inserir 2 comandas e imprimir fila entre cada inserção
+* Escolha de inserir 5 chocolates
+* Escolha da opção 1 (SIM)
+* Nome digitado: bruno
+* Escolha da opção 2 (MAIS OPÇÕES)
+* Escolha da opção 1 (IMPRIMIR FILA DE CLIENTES)
+* Resultado esperado : Fila (bruno)
+* Nome digitado: davi
+* Escolha da opção 2 (MAIS OPÇÕES)
+* Escolha da opção 1 (IMPRIMIR FILA DE CLIENTES)
+* Resultado esperado : Fila (bruno,davi)
+* Escolha da opção 3 (SAIR)
+* Resultado esperado : Valor total e chocolate de todos os integrantes da fila
+
+
+
+
+
+
+Caso 10: Clientes esgotaram os chocolates
+* Escolha de inserir 2 chocolates
+* Escolha da opção 1 (SIM)
+* Nome digitado: bruno
+* Escolha da opção 2 (MAIS OPÇÕES)
+* Escolha da opção 2 (IMPRIMIR PILHA DE CHOCOLATES)
+* Resultado esperado : Pilha com 1 chocolate randômico
+* Escolha da opção 1 (SIM)
+* Nome digitado davi
+* Escolha da opção 2 (MAIS OPÇÕES)
+* Escolha da opção 2 (IMPRIMIR PILHA DE CHOCOLATES)
+* Resultado esperado : “CHOCOLATES ESGOTADOS”
+* Escolha da opção 3 (SAIR)
+* Resultado esperado : Valor total e chocolate de todos os integrantes da fila
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Caso 11: Não há chocolate para todo mundo
+* Escolha de inserir 2 chocolates
+* Escolha da opção 1 (SIM)
+* Nome digitado: bruno
+* Escolha da opção 2 (MAIS OPÇÕES)
+* Escolha da opção 2 (IMPRIMIR PILHA DE CHOCOLATES)
+* Resultado esperado : Pilha com 1 chocolate randômico
+* Escolha da opção 1 (SIM)
+* Nome digitado: davi
+* Escolha da opção 2 (MAIS OPÇÕES)
+* Escolha da opção 2 (IMPRIMIR PILHA DE CHOCOLATES)
+* Resultado esperado : “CHOCOLATES ESGOTADOS”
+* Escolha da opção 1 (SIM)
+* nome digitado: joao paulo
+* Escolha da opção 3 (SAIR)
+* Resultado esperado : Dados das comandas dos três clientes impressas, joao paulo não ganhou um chocolate
